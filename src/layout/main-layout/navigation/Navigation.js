@@ -8,6 +8,7 @@ const MENU_ITEMS = [
     {url: '/mix/history', exact: false, title: 'Mixing History', icon: 'history', iconClass: 'material-icons'},
     // {url: '/covert/new', exact: true, title: 'Create Covert Address', icon: 'call_split', iconClass:'material-icons'},
     {url: '/covert/', exact: false, title: 'Covert Address', icon: 'call_split', iconClass: 'material-icons'},
+    {url: '/stealth/', exact: false, title: 'Stealth Address', icon: 'call_split', iconClass: 'material-icons'},
     {url: '/ring', exact: true, title: 'Ring Statistics', icon: 'show_chart', iconClass: 'material-icons'},
     {url: '/settings', exact: true, title: 'Configuration', icon: 'settings', iconClass: 'material-icons'},
     {url: '/', exact: true, title: 'About', icon: 'info_outline', iconClass: 'material-icons'},

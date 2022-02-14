@@ -18,6 +18,9 @@ import CovertAsset from "../pages/covert/covert-list/covert-assets/CovertAsset";
 import CovertSetRing from "../pages/covert/covert-list/covert-assets/set-ring/CovertSetRing";
 import CovertAddress from "../pages/covert/covert-list/covert-address/CovertAddress";
 import Shutdown from "../pages/shutdown/Shutdown";
+import StealthList from "../pages/stealth/StealthList";
+import NewStealth from "../pages/stealth/new-stealth/NewStealth";
+import StealthBoxList from "../pages/stealth/StealthBoxList";
 
 class App extends React.Component {
     componentDidMount = () => {
@@ -46,6 +49,11 @@ class App extends React.Component {
                     <Route path="/covert/:covertId/address/" component={CovertAddress}/>
                     <Route path="/covert/:covertId/" component={(props) => <StatDetail {...props} path='covert'/>}/>
                     <Route path="/covert" component={CovertList}/>
+
+                    <Route path="/stealth/new" component={NewStealth}/>
+                    <Route path="/stealth/:stealthId/boxes" component={StealthBoxList}/>
+                    <Route path="/stealth" component={StealthList}/>
+
                     <Route path="/shutdown" component={Shutdown}/>
                     <Route path="/" component={Home} exact={true}/>
                     <Redirect to="/"/>

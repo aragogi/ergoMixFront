@@ -26,3 +26,4 @@ export const getToken = tokenId => {
 }
 
 export const COVERT_NAME_SIZE = 30;
+export const STEALTH_NAME_SIZE = 30;

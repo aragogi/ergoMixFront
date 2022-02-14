@@ -2,8 +2,8 @@ import axios from 'axios';
 import { saveActiveMixMap, saveCovertMap, saveMixHistoryMap } from "../store/action";
 import { store } from "../store";
 
-// const DEFAULT_BASE_URL = "http://10.10.9.4:9001";
-const DEFAULT_BASE_URL = "/";
+const DEFAULT_BASE_URL = "http://10.10.9.4:9001/";
+// const DEFAULT_BASE_URL = "/";
 export const BASE_URL = (window.backend === undefined ?  DEFAULT_BASE_URL : window.backend);
 // export const BASE_URL = "/";
 const instance = axios.create({baseURL: BASE_URL});
@@ -66,6 +66,10 @@ export class ApiNetwork {
             }
         });
     };
+
+    static stealthList = () =>{
+
+    }
 
     static covertRequest = covert => {
         return this.createPromise(ApiNetwork.postJson("covert", covert));
@@ -185,6 +189,28 @@ export class ApiNetwork {
 
     static fee = () => {
         return ApiNetwork.createPromise(instance.get('ageusd/fee'));
+    }
+
+    static createStealthAddress = (name) => {
+        return this.createPromise(this.postJson("stealth", {stealthName: name})).then(response => response.data)
+    }
+
+    static createStealthPaymentAddress = (stealthPk) => {
+        return this.createPromise(instance.get(`/stealth/address/${stealthPk}`)).then(response => response.data)
+    }
+
+    static getStealthAddressBoxes = (stealthId) => {
+        return this.createPromise(instance.get(`/stealth/${stealthId}/getUnspentBoxes`)).then(response => response.data)
+    }
+
+    static getStealthAddresses = () => {
+        return this.createPromise(instance.get("stealth", )).then(response => response.data)
+    }
+    static getStealthAddress = (stealthId) => {
+        return this.createPromise(instance.get(`stealth/${stealthId}`, )).then(response => response.data)
+    }
+    static spentStealthBoxes = (stealthId, boxes) => {
+        return this.createPromise(this.postJson(`/stealth/${stealthId}/spend`, boxes))
     }
 }
 
